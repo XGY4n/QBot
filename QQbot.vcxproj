@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ed46127e-2ccd-4da3-a116-edb79ab2726a}</ProjectGuid>
+    <RootNamespace>QQbot</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <TargetFrameworkVersion>4.7.2</TargetFrameworkVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
+    <ManagedAssembly>true</ManagedAssembly>
+    <IncludePath>C:\Users\DELL\AppData\Local\Programs\Python\Python39-32\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\DELL\AppData\Local\Programs\Python\Python39-32\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
+    <ManagedAssembly>true</ManagedAssembly>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAsManaged>true</CompileAsManaged>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ExceptionHandling>false</ExceptionHandling>
+      <AdditionalIncludeDirectories>D:\pojt\QQbot;C:\Users\DELL\AppData\Local\Programs\Python\Python39-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>C:\Users\DELL\AppData\Local\Programs\Python\Python39-32\libs\python39_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <CompileAsManaged>true</CompileAsManaged>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ExceptionHandling>false</ExceptionHandling>
+      <AdditionalIncludeDirectories>E:\mysql\include;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\include;$(ProjectDir)\ini;$(ProjectDir)\Game;$(ProjectDir)\QBot;$(ProjectDir)\log;$(ProjectDir)\mysql;$(ProjectDir)\MCBOT;$(ProjectDir)\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>E:\mysql\lib;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>E:\mysql\lib\libmysql.lib;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\libs\python310.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BiliVFollow.cpp" />
+    <ClCompile Include="ChatGPT.cpp" />
+    <ClCompile Include="ini\CInI.cpp" />
+    <ClCompile Include="ini\CInIWriter.cpp" />
+    <ClCompile Include="ini\CInIReader.cpp" />
+    <ClCompile Include="CPythonCall.cpp" />
+    <ClCompile Include="ErrorHelpMessage.cpp" />
+    <ClCompile Include="FakeAI.cpp" />
+    <ClCompile Include="Game\Dice.cpp" />
+    <ClCompile Include="Game\poker.cpp" />
+    <ClCompile Include="Game\TPWinner.cpp" />
+    <ClCompile Include="ini\ini.cpp" />
+    <ClCompile Include="InstructionPart.cpp" />
+    <ClCompile Include="163music.cpp" />
+    <ClCompile Include="log\Timelog.cpp" />
+    <ClCompile Include="MCBOT\McServer.cpp" />
+    <ClCompile Include="MCBOT\ServerStart.cpp" />
+    <ClCompile Include="MCBOT\TunnleRestart.cpp" />
+    <ClCompile Include="mysql\mysql_main.cpp" />
+    <ClCompile Include="Python_main.cpp" />
+    <ClCompile Include="QueueDef.cpp" />
+    <ClCompile Include="ChineseString.cpp" />
+    <ClCompile Include="MessageQueue.cpp" />
+    <ClCompile Include="QueueOperation.cpp" />
+    <ClCompile Include="SelfMode.cpp" />
+    <ClCompile Include="SendMessage.cpp" />
+    <ClCompile Include="systemStringtoString.cpp" />
+    <ClCompile Include="源.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BiliVFollow.h" />
+    <ClInclude Include="ChatGPT.h" />
+    <ClInclude Include="ini\CInI.h" />
+    <ClInclude Include="ini\CInIWriter.h" />
+    <ClInclude Include="ini\CInIReader.h" />
+    <ClInclude Include="CPythonCall.h" />
+    <ClInclude Include="ErrorHelpMessage.h" />
+    <ClInclude Include="FakeAI.h" />
+    <ClInclude Include="Game\Dice.h" />
+    <ClInclude Include="Game\poker.h" />
+    <ClInclude Include="Game\TPWinner.h" />
+    <ClInclude Include="ini\ini.h" />
+    <ClInclude Include="InstructionPart.h" />
+    <ClInclude Include="163music.h" />
+    <ClInclude Include="log\Timelog.h" />
+    <ClInclude Include="MCBOT\McServer.h" />
+    <ClInclude Include="MCBOT\ServerStart.h" />
+    <ClInclude Include="MCBOT\TunnleRestart.h" />
+    <ClInclude Include="mysql\mysql_main.h" />
+    <ClInclude Include="Python_main.h" />
+    <ClInclude Include="QueueDef.h" />
+    <ClInclude Include="ChineseString.h" />
+    <ClInclude Include="MessageQueue.h" />
+    <ClInclude Include="QueueOperation.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SelfMode.h" />
+    <ClInclude Include="SendMessage.h" />
+    <ClInclude Include="systemStringtoString.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QQbot1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ini\ADIMLIST.ini" />
+    <None Include="ini\GPTsetting.ini" />
+    <None Include="ini\GroupName.ini" />
+    <None Include="ini\McTunnelPlan.ini" />
+    <None Include="ini\McVer.ini" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

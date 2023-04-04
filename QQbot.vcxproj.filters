@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="QueueDef.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="源.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ChineseString.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="systemStringtoString.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageQueue.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QueueOperation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionPart.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SendMessage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="163music.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorHelpMessage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BiliVFollow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeAI.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Python_main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ini\ini.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Dice.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\poker.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\TPWinner.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="log\Timelog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mysql\mysql_main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SelfMode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MCBOT\McServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MCBOT\ServerStart.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MCBOT\TunnleRestart.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ChatGPT.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPythonCall.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ini\CInIReader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ini\CInIWriter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ini\CInI.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="QueueDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ChineseString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="systemStringtoString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QueueOperation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionPart.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SendMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="163music.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorHelpMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BiliVFollow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeAI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Python_main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ini\ini.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Dice.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\poker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\TPWinner.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="log\Timelog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mysql\mysql_main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SelfMode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MCBOT\McServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MCBOT\ServerStart.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MCBOT\TunnleRestart.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ChatGPT.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPythonCall.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ini\CInIReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ini\CInIWriter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ini\CInI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QQbot1.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\favicon.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ini\McVer.ini" />
+    <None Include="ini\McTunnelPlan.ini" />
+    <None Include="ini\GPTsetting.ini" />
+    <None Include="ini\GroupName.ini" />
+    <None Include="ini\ADIMLIST.ini" />
+  </ItemGroup>
+</Project>
