@@ -8,6 +8,13 @@ public:
 	Chinese();
 	~Chinese();
 
+	struct Qmsg {
+		std::string message;
+		std::string name;
+		std::string QQnumber;
+		std::string DataTime;
+	};
+
 	//char* to wchar_t*
 	wchar_t* MBCSToUnicode(wchar_t* buff, const char* str);
 	//wchar* to char*
@@ -18,6 +25,8 @@ public:
 
 	char* wstrToChar(std::wstring& wstr);
 	char* wstrToChar(const wchar_t* wstr);
+
+	Qmsg Qmsgmake(std::string Rowmessage);
 };
 
 std::string make_name(std::string RawMessage);

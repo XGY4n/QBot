@@ -18,9 +18,9 @@
 #include"Timelog.h"
 #include"Python_main.h"
 #define _ISNOTFOUND_(str) (str.size() == 0) ? 1 : 0
-#define P_MuicePath "./resource/music/"
+#define P_MuicePath "E:/Qbot/resource/music/"
 
-std::string MusicPath = "./resource/music/";
+std::string MusicPath = "E:/Qbot/resource/music/";
 
 std::string musicID_standardization(std::string musicID)//make name lawful  \\resource
 {
@@ -97,7 +97,7 @@ PY_Status_code Python_music_main(std::string musicID)
     std::string Path;
     wchar_t* res2;
     musicID = musicID_standardization(musicID);
-    Send_StringTEXT_Message(_WAITMESSAGE_);
+    Send_wStringTEXT_Message(_WAITMESSAGE_);
     LOG_writer(Now_time() + "Take song: " + musicID);
     res2 = multi_Byte_To_Wide_Char(musicID);
     PyRun_SimpleString("import sys");
@@ -112,7 +112,7 @@ PY_Status_code Python_music_main(std::string musicID)
     Path = std::string(P_MuicePath) + UTF82Char(ans);
     if (check_file(Path) == -1)
         return FILE_NOT_FIND;
-    Send_StringTEXT_Message("Uploading VIP support from 钟/亲亲~");
+    Send_wStringTEXT_Message(L"Uploading VIP support from 钟 😘");
     Send_File(Path);
     return EXECUT_SEUCCESS;
 }
@@ -130,7 +130,7 @@ PY_Status_code Python_bt_main(std::string message)
     std::string Path;
     wchar_t* res2;
     message = musicID_standardization(message);
-    Send_StringTEXT_Message(_WAITMESSAGE_);
+    Send_wStringTEXT_Message(_WAITMESSAGE_);
     LOG_writer(Now_time() + "Take bt: " + message);
     res2 = multi_Byte_To_Wide_Char(message);
     PyRun_SimpleString("import sys");
@@ -158,7 +158,7 @@ PY_Status_code Python_com_main(std::string message)
     std::string Path;
     wchar_t* res2;
     message = musicID_standardization(message);
-    Send_StringTEXT_Message(_WAITMESSAGE_);
+    Send_wStringTEXT_Message(_WAITMESSAGE_);
     LOG_writer(Now_time() + "Take bilicomments: " + message);
     res2 = multi_Byte_To_Wide_Char(message);
     PyRun_SimpleString("import sys");
@@ -183,7 +183,7 @@ PY_Status_code Python_movie_main(std::string message)
     std::string Path;
     wchar_t* res2;
     message = musicID_standardization(message);
-    Send_StringTEXT_Message(_WAITMESSAGE_);
+    Send_wStringTEXT_Message(_WAITMESSAGE_);
     LOG_writer(Now_time() + "Take bt: " + message);
     res2 = multi_Byte_To_Wide_Char(message);
     PyRun_SimpleString("import sys");

@@ -105,6 +105,132 @@ std::string Chinese::wstrToStr(std::wstring& wstr)
 }
 
 
+Chinese::Qmsg Chinese::Qmsgmake(std::string Rowmessage)
+{
+    Qmsg result;
+
+    Chinese ch;
+    std::wstring w_str = ch.strToWstr(Rowmessage);
+    int neartes_sp = 0;
+    int qnum_letf;
+    int qnum_right;
+    int time_left;
+    int time_right;
+    int allstart = 0;
+
+    for (int i = w_str.size(); i > 0; i--)
+    {
+        //std::wcout << w_str[i];
+        //std::cout << " " << w_str[i] << " " << i << std::endl;//int(RawMessage[i])
+        if (w_str[i] == 32)
+        {
+            neartes_sp = i;
+        }
+        if (w_str[i] == 49057)
+        {
+            allstart = i;
+            break;
+        }
+
+    }
+
+    for (int R_qseeker = neartes_sp; R_qseeker != allstart; R_qseeker--)
+    {
+        if (w_str[R_qseeker] == 41)
+        {
+            qnum_right = R_qseeker;
+            break;
+        }
+
+    }
+    for (int L_qseeker = qnum_right; L_qseeker > allstart; L_qseeker--)
+    {
+        //std::cout << w_str[L_qseeker] << std::endl;
+        if (w_str[L_qseeker] == 40)
+        {
+            qnum_letf = L_qseeker;
+            break;
+        }
+    }
+
+    std::wstring sendname4;
+
+    for (int i = allstart + 1; i < qnum_letf; i++)
+    {
+        sendname4 = sendname4 + w_str[i];
+    }
+    result.name = ch.wstrToStr(sendname4);
+    //std::cout << "size : " << result.name.size() << std::endl;
+    if (result.name.size() == 0)
+        result.name = "";
+
+
+    std::wstring sendname3;
+
+    for (int i = qnum_letf + 1; i < qnum_right; i++)
+    {
+        sendname3 = sendname3 + w_str[i];
+    }
+    result.QQnumber = ch.wstrToStr(sendname3);
+    //std::cout << "size : " << ans2.size() << std::endl;
+    if (result.QQnumber.size() == 0)
+        result.QQnumber = "";
+    //time
+    for (int L_tseeker = neartes_sp; ; L_tseeker++)
+    {
+        if (std::isdigit(w_str[L_tseeker]))
+        {
+            time_left = L_tseeker;
+            break;
+        }
+    }
+    for (int R_tseeker = time_left; ; R_tseeker++)
+    {
+        if (std::isdigit(w_str[R_tseeker]) == false && w_str[R_tseeker] != 58)
+        {
+            time_right = R_tseeker;
+            break;
+        }
+    }
+    std::wstring t;
+    for (int i = time_left; i < time_right; i++)
+    {
+        t = t + w_str[i];
+    }
+    result.DataTime = ch.wstrToStr(t);
+    //std::cout << "size : " << ans3.size() << std::endl;
+    if (result.DataTime.size() == 0)
+        result.DataTime = "";
+
+
+    int L_msg = 0;
+    int R_msg = w_str.size();
+
+    for (int i = time_right;; i++)
+    {
+        if (w_str[i] != 13 && w_str[i] != 32)
+        {
+            L_msg = i;
+            break;
+        }
+           
+    }
+
+    std::wstring msg;
+    for (int i = L_msg; i < R_msg-2; i++)
+    {
+        if (w_str[i] != 13)
+            msg = msg + w_str[i];
+    }
+    result.message = ch.wstrToStr(msg);
+    //std::cout << "size : " << ans4.size() << std::endl;
+    if (result.message.size() == 0)
+        result.message = "";
+
+    return result;
+}
+
+
 
 std::string make_message(std::string RawMessage)//# 35
 {
@@ -149,9 +275,10 @@ std::string make_name(std::string RawMessage)
     int end = 0;
     Chinese ch;
     std::wstring w_str = ch.strToWstr(RawMessage);
+    std::wcout << w_str << std::endl;
         for (int i = w_str.size(); i > 0; i--)
         {
-            //cout << w_str[i] <<" "<<i<< endl;//int(RawMessage[i])
+            //std::cout << w_str[i] <<" "<<i<< std::endl;//int(RawMessage[i])
             if (start != 0 && end != 0)
             {
                 break;

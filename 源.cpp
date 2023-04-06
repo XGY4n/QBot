@@ -28,16 +28,17 @@ using namespace System::Runtime::InteropServices;
 #pragma comment(lib, "comsuppw.lib")
 #define _INIPATH_ "./ini"
 
-std::string GroupName = "aa";// InI_Group_Name();//"aa";
+std::string GroupName = InI_Group_Name();// InI_Group_Name();//"aa";
 HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(GroupName));
 
 
 void wait_scan(std::string GroupName)
 {
-    std::cout << GroupName << std::endl;
+    //std::cout << GroupName << std::endl;
     while (1)
     {
-        HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(GroupName));
+        std::cout << GroupName << std::endl;
+        HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(GroupName));//"多媒体部防疫爱好者的"
         if (MainGroup != 0)
         {
             SetForegroundWindow(MainGroup);
@@ -50,14 +51,17 @@ void wait_scan(std::string GroupName)
         system("cls");
     }
 }
+
+
+
+
 int main()
 {
     system("cls");
     wait_scan(GroupName);
-    
+
 
     
-    //Py_Initialize();
     //std::cout
     //wait uia scan
     std::thread TakeRowQmessage(Tpush_rawmessage_to_queue);

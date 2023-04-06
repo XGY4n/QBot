@@ -22,9 +22,10 @@ std::string InI_Group_Name()
 {
 	LPCTSTR lpFileName = TEXT("./ini/GroupName.ini");
 	WCHAR content[100];
+	//std::cout << content << std::endl;
 	DWORD status = ::GetPrivateProfileString(TEXT("Group1"), TEXT("name"), TEXT(""), content, 100, lpFileName);
 	std::string g_name = UTF82Char(wideCharToMultiByte(content));
-	std::cout<<"gname" << g_name << std::endl;
+	//std::wcout << content << std::endl;
 	return g_name;
 }
 

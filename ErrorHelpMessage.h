@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include <string>
 #include <tchar.h>
@@ -13,16 +13,16 @@
 #include <regex>
 #include <msclr\marshal_cppstd.h>
 
-#define _FILERROR_ "ÎÄ¼ş×¥È¡ÓĞÎó»òÕß³ÌĞò³öÏÖÁË´íÎó,Çë@xgt»òÕßÖØÊÔ/¿ì¿ŞÁË"
-#define _WEBERROR_ "×ÊÔ´²»´æÔÚ"
-#define _WAITMESSAGE_ "±ğ¼±~/Ç×Ç×"
-#define _INSWRONG_ "Ö´ĞĞÊ§°Ü!Ö¸ÁîÍ·ÕıÈ·µ«Ö¸ÁîÖµ²»·ûºÏ¹æÔò,ÊäÈë#ºÅ + help²é¿´°ïÖúÄãÕâµÍÄÜ/Á÷º¹"
+#define _FILERROR_ "æ–‡ä»¶æŠ“å–æœ‰è¯¯æˆ–è€…ç¨‹åºå‡ºç°äº†é”™è¯¯,è¯·@xgtæˆ–è€…é‡è¯•/å¿«å“­äº†"
+#define _WEBERROR_ "èµ„æºä¸å­˜åœ¨"
+#define _WAITMESSAGE_ L"åˆ«æ€¥~ğŸ¤—"
+#define _INSWRONG_ "æ‰§è¡Œå¤±è´¥!æŒ‡ä»¤å¤´æ­£ç¡®ä½†æŒ‡ä»¤å€¼ä¸ç¬¦åˆè§„åˆ™,è¾“å…¥#å· + helpæŸ¥çœ‹å¸®åŠ©ä½ è¿™ä½èƒ½/æµæ±—"
 #define _NOFUNCTION_ " /NO NO such function"
 #define _HELPIMG_ "D:\\pojt\\QQbot\\picture\\main_help.png"
 #define _SPEAK_ "hi I am a QQbot made by xgt he is my father/tp"
 #define _SEVEREXMESG_ "sever is already running"
 #define _TUNNElFAILMSG_ "sever is already running"
-#define _NOTADIM_ "ºÇºÇ£¬ÈºÓÑÄãÓÖ×°¹ÜÀíÔ±Æ­ÎÒÁË°É£¬ÏÂÒ»ÂÖÑ¯ÎÒ½«°ÑÈºÀïÃæ¸øºä±¬£¬ËûÂèµÄÒ»ÏÂ×Óºä±¬£¬ÏàĞÅÕâ»á¸øÎÒºÜ´óµÄ¿ì¸Ğ"
+#define _NOTADIM_ "å‘µå‘µï¼Œç¾¤å‹ä½ åˆè£…ç®¡ç†å‘˜éª—æˆ‘äº†å§ï¼Œä¸‹ä¸€è½®è¯¢æˆ‘å°†æŠŠç¾¤é‡Œé¢ç»™è½°çˆ†ï¼Œä»–å¦ˆçš„ä¸€ä¸‹å­è½°çˆ†ï¼Œç›¸ä¿¡è¿™ä¼šç»™æˆ‘å¾ˆå¤§çš„å¿«æ„Ÿ"
 
 std::string Send_Help_Message();
 

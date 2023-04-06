@@ -120,8 +120,8 @@ def history_reader(msg_list):
 
 def ask(question):
     msg_list = []
-    key_pool = ["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",
-                "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",
+    key_pool = ["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",
+                "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",
                # "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"
                ]
     
@@ -167,6 +167,8 @@ def ask(question):
     except requests.exceptions.Timeout:
         Pmessage("timeout")
         return "timeout {}s try use #ai.timeout x to set biger value than {}".format(templist[3], templist[3])
+    except Exception as e:
+        return str(e)
     except:
         Pmessage("\033[1;31;40m{}\033[0m".format("Response<{}>".format(response.status_code)))
         return "Response<{}>".format(response.status_code)
@@ -200,8 +202,8 @@ def chat_main(Row):
         if temp_ans == -1:
             return "ans error"
         return temp_ans
-    except:
-        return "error"
+    except Exception as e:
+        return str(e)
 
    
 if __name__ == "__main__":

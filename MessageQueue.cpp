@@ -49,19 +49,25 @@ int  Tpush_rawmessage_to_queue()//this function to take Rawmessage from QQ
     bool heart_beat = true;
     while (1)
     {
-        HWND MainGroup = FindWindow(_T("TXGuiFoundation"), _T("aa"));//
+        HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(InI_Group_Name()));//
         SetForegroundWindow(MainGroup);
         MarshalString(messagee->Take(), RawMessage);//systemstring to string Take() is C# function cant take UIA message
         _TIMER_(RawMessage, LatestMessage)
-        if (timer_s == 5000)
-            LOG_writer("[Self]" + Now_time() + "Heart beat");
-        else if (timer_s > 5000)
-            timer_s = 5000;
+            if (timer_s == 5000)
+                LOG_writer("[Self]" + Now_time() + "Heart beat");
+            else if (timer_s > 5000)
+                timer_s = 5000;
         LatestMessage = RawMessage;
-        name = make_name(RawMessage);//Make the nearest Message username
-        QQnumber = make_number(RawMessage);//Make the nearest Message UserQQnumber
-        message = make_message(RawMessage);//Make the nearest Message UserMessage
-        DataTime = make_time(RawMessage);//Make the nearest Message SendTime
+
+
+        Chinese Qmsg ;
+        Chinese::Qmsg result = Qmsg.Qmsgmake(RawMessage);
+        //exit(0);
+        //std::cout << result.DataTime << " " << result.name << " " << result.message<< " " << result.QQnumber<< std::endl;
+        name = result.name;//make_name(RawMessage);//Make the nearest Message username
+        QQnumber = result.QQnumber;//make_number(RawMessage);//Make the nearest Message UserQQnumber
+        message = result.message;//make_message(RawMessage);//Make the nearest Message UserMessage
+        DataTime = result.DataTime;//make_time(RawMessage);//Make the nearest Message SendTime
         std::string mas = DataTime + "]" + name + "(" + QQnumber + ")" + message;
         int Mark = raw_check(message);//Check the nearest Message is call bot or not
         //std::cout << "__"<< DataTime <<"__" << std::endl;

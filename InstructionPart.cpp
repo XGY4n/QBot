@@ -213,13 +213,9 @@ int Bot_Execut(Bot_mode mode, std::string Ins, std::string Name, std::string QQn
 			/*Send_StringTEXT_Message("ai");
 			break;*/
 			if (AI->mode)
-			{
-				AI->ChatGPT_OPENAI(Ins);
-			}
-			else
-			{
 				AI->ChatGPT_NEWBING(Ins);
-			}
+			else
+				AI->ChatGPT_OPENAI(Ins);
 
 			break;
 			/*if (QQnumber.compare("1364303391") == 0 || QQnumber.compare("2995244756") == 0)
