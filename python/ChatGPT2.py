@@ -117,14 +117,27 @@ def history_reader(msg_list):
         return msg_list
     return msg_list
     
+def key_iniread():
+
+    try:
+        GPTKEY_list = []
+        cf = ConfigParser()
+        cf.read("./ini/GPTsetting.ini")
+        keynumm = cf.get('GPTKEYPOLL','keynum')
+        for i in range(1,int(keynumm)):
+            ask = 'key{}'.format(i)
+            GPTKEY_list.append(cf.get('GPTKEYPOLL', ask))
+        return GPTKEY_list
+    except:
+        return -1
+
+
 
 def ask(question):
     msg_list = []
-    key_pool = ["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",
-                "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",
-               # "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"
-               ]
     
+    key_pool = key_iniread()
+
     proxies = { "http": None, "https": "127.0.0.1:7890"}
     urllib3.disable_warnings()
     
