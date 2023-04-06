@@ -83,7 +83,7 @@ void Send_File(std::string Path, std::string UserName)
 //this part send File and message to Group
 void Send_StringTEXT_Message(std::string StringTEXT)
 {
-    std::string group = "aa";//InI_Group_Name();
+    std::string group = InI_Group_Name();
     HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(group));//"_T()408"
     SetForegroundWindow(MainGroup);
     std::string s ="> " + StringTEXT; 
@@ -98,8 +98,8 @@ void Send_StringTEXT_Message(std::string StringTEXT)
 }
 void Send_wStringTEXT_Message(wchar_t * StringTEXT)
 {
-    std::string group = "aa";//InI_Group_Name();
-    HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(group));//"_T()408"
+    std::string group = InI_Group_Name();
+    HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(InI_Group_Name()));//"_T()408"
     SetForegroundWindow(MainGroup);
     std::wstring s = L"> ";
     s=s+StringTEXT;
@@ -112,7 +112,7 @@ void Send_wStringTEXT_Message(wchar_t * StringTEXT)
 }
 void Send_File(std::string Path)
 {
-    HWND MainGroup = FindWindow(_T("TXGuiFoundation"), _T("aa"));
+    HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(InI_Group_Name()));
     char path[2255];
     strcpy(path, Path.c_str());
     CopyFileToClipboard(path);
