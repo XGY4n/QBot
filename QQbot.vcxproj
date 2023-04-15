@@ -150,7 +150,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExceptionHandling>false</ExceptionHandling>
-      <AdditionalIncludeDirectories>E:\mysql\include;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\include;$(ProjectDir)\ini;$(ProjectDir)\Game;$(ProjectDir)\QBot;$(ProjectDir)\log;$(ProjectDir)\mysql;$(ProjectDir)\MCBOT;$(ProjectDir)\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\mysql\include;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\include;$(ProjectDir)\ini;$(ProjectDir)\Game;$(ProjectDir)\QBot;$(ProjectDir)\log;$(ProjectDir)\mysql;$(ProjectDir)\MCBOT;$(ProjectDir)\;$(ProjectDir)\mysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -166,8 +166,6 @@
     <ClCompile Include="BiliVFollow.cpp" />
     <ClCompile Include="ChatGPT.cpp" />
     <ClCompile Include="ini\CInI.cpp" />
-    <ClCompile Include="ini\CInIWriter.cpp" />
-    <ClCompile Include="ini\CInIReader.cpp" />
     <ClCompile Include="CPythonCall.cpp" />
     <ClCompile Include="ErrorHelpMessage.cpp" />
     <ClCompile Include="FakeAI.cpp" />
@@ -196,8 +194,6 @@
     <ClInclude Include="BiliVFollow.h" />
     <ClInclude Include="ChatGPT.h" />
     <ClInclude Include="ini\CInI.h" />
-    <ClInclude Include="ini\CInIWriter.h" />
-    <ClInclude Include="ini\CInIReader.h" />
     <ClInclude Include="CPythonCall.h" />
     <ClInclude Include="ErrorHelpMessage.h" />
     <ClInclude Include="FakeAI.h" />

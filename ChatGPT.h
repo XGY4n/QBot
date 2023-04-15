@@ -8,6 +8,7 @@
 #include <locale>
 #include <codecvt>
 #include <fstream>
+#include <tchar.h>
 #include"Timelog.h"
 #include"SendMessage.h"
 #include"163music.h"
@@ -15,7 +16,7 @@
 #include"ErrorHelpMessage.h"
 #include"ChineseString.h"
 #include"ini.h"
-
+#include"CInI.h"
 
 extern class ChatGPT;
 

@@ -31,7 +31,7 @@ void check_push(std::string name, std::string QQnumber, std::string message, std
     {
         temp = finalMesssage;//save the message to check is same or not
         //std::cout << Now_time() << "fianlMesssage: " << finalMesssage << std::endl;
-        LOG_writer(Now_time() + finalMesssage);
+        LOG_writer(Now_time() + "[" + finalMesssage);
         Qmessage.push_back(name+"("+QQnumber+")" + message);//string have # push to first queue call Qmessage
     }
 }//this function push message call bot to queue , time is important vaule

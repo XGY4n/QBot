@@ -8,6 +8,7 @@
 #define _MCVERPATH_ "./ini/McVer.ini"
 #define _MCTUNNEL_ "./ini/McTunnelPlan.ini"
 #define _GTPSETTING_ "./ini/GPTsetting.ini"
+#define _GTPSETTINGW_ L"./ini/GPTsetting.ini"
 
 extern std::string GroupName;
 extern HWND MainGroup;

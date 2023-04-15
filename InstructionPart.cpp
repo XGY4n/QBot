@@ -31,7 +31,7 @@
 #include"McServer.h"
 #include"ChatGPT.h"
 //#include"CInI.h"
-#include"CInIReader.h"
+//#include"CInIReader.h"
 
 
 #define _isHEADINS_(INS) ((INS.find(".") == INS.npos) ? true : false)

@@ -47,6 +47,7 @@ int  Tpush_rawmessage_to_queue()//this function to take Rawmessage from QQ
     std::string LatestMessage;
     int timer_s = 0;
     bool heart_beat = true;
+    std::wstring w;
     while (1)
     {
         HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(InI_Group_Name()));//
@@ -58,32 +59,52 @@ int  Tpush_rawmessage_to_queue()//this function to take Rawmessage from QQ
             else if (timer_s > 5000)
                 timer_s = 5000;
         LatestMessage = RawMessage;
+        Chinese Qmsg;
+        Chinese::Qmsg result;
+        try
+        {
+             result = Qmsg.Qmsgmake(RawMessage);
+             //std::cout << "|" << result.DataTime << "|" << result.name << "|" << result.message<< "|" << result.QQnumber<< std::endl;
+             name = result.name;//make_name(RawMessage);//Make the nearest Message username
+             QQnumber = result.QQnumber;//make_number(RawMessage);//Make the nearest Message UserQQnumber
+             message = result.message;//make_message(RawMessage);//Make the nearest Message UserMessage
+             DataTime = result.DataTime;//make_time(RawMessage);//Make the nearest Message SendTime
+             std::string mas = "[" + DataTime + "]" + name + "(" + QQnumber + ")" + message;
+        }
+        catch (const std::out_of_range& e)
+        { 
+            //std::cout << e.what() << std::endl; 
+            //Send_StringTEXT_Message(std::string(e.what()));//
+            name = make_name(RawMessage);//Make the nearest Message username
+            QQnumber = make_number(RawMessage);//Make the nearest Message UserQQnumber
+            message = make_message(RawMessage);//Make the nearest Message UserMessage
+            DataTime = make_time(RawMessage);//Make the nearest Message SendTime
+            std::string mas = "[" + DataTime + "]" + name + "(" + QQnumber + ")" + message;
+        }
+        /*Chinese Qmsg;
+        Chinese::Qmsg result = Qmsg.Qmsgmake(RawMessage);*/
 
-
-        Chinese Qmsg ;
-        Chinese::Qmsg result = Qmsg.Qmsgmake(RawMessage);
-        //exit(0);
-        //std::cout << result.DataTime << " " << result.name << " " << result.message<< " " << result.QQnumber<< std::endl;
-        name = result.name;//make_name(RawMessage);//Make the nearest Message username
+        //std::cout << "|" << result.DataTime << "|" << result.name << "|" << result.message<< "|" << result.QQnumber<< std::endl;
+        /*name = result.name;//make_name(RawMessage);//Make the nearest Message username
         QQnumber = result.QQnumber;//make_number(RawMessage);//Make the nearest Message UserQQnumber
         message = result.message;//make_message(RawMessage);//Make the nearest Message UserMessage
-        DataTime = result.DataTime;//make_time(RawMessage);//Make the nearest Message SendTime
-        std::string mas = DataTime + "]" + name + "(" + QQnumber + ")" + message;
+        DataTime = result.DataTime;//make_time(RawMessage);//Make the nearest Message SendTime*/
+        std::string mas = "[" + DataTime + "]" + name + "(" + QQnumber + ")" + message;
         int Mark = raw_check(message);//Check the nearest Message is call bot or not
         //std::cout << "__"<< DataTime <<"__" << std::endl;
         if (Mark == Bot_SelfCall)//have
         {
             if (tempp.compare(mas) != 0)
             {
-                tempp = DataTime + "]" + name + "(" + QQnumber + ")" + message;
+                tempp ="[" +  DataTime + "]" + name + "(" + QQnumber + ")" + message;
 
-                LOG_writer("[Self]" + Now_time() + "[" + tempp);
+                LOG_writer("[Self]" + Now_time() +  tempp);
 
                 //LOG_writer(Now_time() + mas);
             }
             else
             {
-                tempp = DataTime + "]" + name + "(" + QQnumber + ")" + message;
+                tempp = "[" + DataTime + "]" + name + "(" + QQnumber + ")" + message;
                 //LOG_writer(DataTime + "]" + name + "(" + QQnumber + ")" + message);
             }
         }
@@ -98,7 +119,7 @@ int  Tpush_rawmessage_to_queue()//this function to take Rawmessage from QQ
         {
             if (tempp.compare(mas) != 0)
             {
-                tempp = DataTime +  "]" + name + "(" + QQnumber + ")" + message;
+                tempp = "[" + DataTime +  "]" + name + "(" + QQnumber + ")" + message;
                 /*if (message.compare("图片") == 0)
                 {
                     LOG_writer("[Not Call]" + Now_time() + "[" + tempp);
@@ -108,13 +129,13 @@ int  Tpush_rawmessage_to_queue()//this function to take Rawmessage from QQ
                     LOG_writer("[Not Call]" + Now_time() + "[" + tempp);
                 }*/
                 //std::cout<< "[Not Call]" << Now_time() <<"["<< tempp << std::endl;
-                LOG_writer("[Not Call]" + Now_time() + "[" + tempp);
+                LOG_writer("[Not Call]" + Now_time()  + tempp);
                 
                 //LOG_writer(Now_time() + mas);
             }    
             else
             {
-                tempp = DataTime + "]" + name + "(" + QQnumber + ")" + message;
+                tempp = "[" + DataTime + "]" + name + "(" + QQnumber + ")" + message;
                 //LOG_writer(DataTime + "]" + name + "(" + QQnumber + ")" + message);
             }
         }

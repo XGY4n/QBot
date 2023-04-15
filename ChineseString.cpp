@@ -122,7 +122,7 @@ Chinese::Qmsg Chinese::Qmsgmake(std::string Rowmessage)
     {
         //std::wcout << w_str[i];
         //std::cout << " " << w_str[i] << " " << i << std::endl;//int(RawMessage[i])
-        if (w_str[i] == 32)
+        if (w_str[i] == 32&& w_str[i-1] == 41 && w_str[i + 1] == 32)
         {
             neartes_sp = i;
         }
@@ -133,7 +133,8 @@ Chinese::Qmsg Chinese::Qmsgmake(std::string Rowmessage)
         }
 
     }
-
+    if (neartes_sp == 0)
+        throw std::out_of_range("WARNING exceeds limit");
     for (int R_qseeker = neartes_sp; R_qseeker != allstart; R_qseeker--)
     {
         if (w_str[R_qseeker] == 41)
@@ -171,6 +172,7 @@ Chinese::Qmsg Chinese::Qmsgmake(std::string Rowmessage)
     {
         sendname3 = sendname3 + w_str[i];
     }
+    //std::string format 
     result.QQnumber = ch.wstrToStr(sendname3);
     //std::cout << "size : " << ans2.size() << std::endl;
     if (result.QQnumber.size() == 0)

@@ -90,12 +90,6 @@
     <ClCompile Include="CPythonCall.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ini\CInIReader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ini\CInIWriter.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ini\CInI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -174,12 +168,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CPythonCall.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ini\CInIReader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ini\CInIWriter.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ini\CInI.h">

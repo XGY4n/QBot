@@ -9,7 +9,7 @@
 #define _GTPSETTING_ "./ini/GPTsetting.ini"
 #include <comutil.h>  
 #pragma comment(lib, "comsuppw.lib")
-
+	
 std::wstring string2wstring2(const std::string& s)
 {
 	_bstr_t t = s.c_str();

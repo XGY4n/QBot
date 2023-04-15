@@ -18,7 +18,7 @@ cookie2 = {'_ntes_nnid=bfa1c4284263e4375b6c9d06d8634ff5,1625386968719; _ntes_nui
 LogPath = "./log/"+time.strftime('%Y-%m-%d',time.localtime(time.time())) + ".log"
 option = webdriver.EdgeOptions()
 option.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
-#option.add_argument('--headless')
+option.add_argument('--headless')
 browser = webdriver.Edge(options=option,executable_path=path) 
 
 
@@ -73,12 +73,11 @@ def take_songurl(mid):
     #bot_print(string):
     
     browser.get(Mp3Path)
-    browser.delete_all_cookies()
-    with open('./cookies-163.txt','r') as f:
-        cookies_list = json.load(f)
-        for cookie in cookies_list:
-            browser.add_cookie(cookie)
-    browser.refresh()
+    #browser.delete_all_cookies()
+    #with open('./cookies-163.txt','r') as f:
+        #cookies_list = json.load(f)
+        #for cookie in cookies_list:
+            #browser.refresh()
     time.sleep(0.5)
     text = browser.find_element(By.XPATH,"/html/body")#(?<="url":"").+(?=","br") (?<="type":").+(?=","gain")
     rowid = text.get_attribute("innerHTML")#innerHTML #outerHTML #textContent /dumps
@@ -92,7 +91,10 @@ def take_songurl(mid):
     for link in id:
         songtype = link     
     #browser.quit()
-    return songtype, url
+    resultlist = []
+    resultlist.append(songtype)
+    resultlist.append(url)
+    return resultlist#songtype, url
 
 
 def take_songid(SreachMessage):
@@ -145,7 +147,7 @@ def music_main(RawName):
     FullPath = SongName + "." + SongType
     return FullPath
 
-if __name__ == "__main__":
+if __name__ == "__main__":#肖邦：升C小调夜曲（遗作）, 未编号
     music_main("冬之花")
 
     

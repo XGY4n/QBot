@@ -190,18 +190,18 @@ void ChatGPT::ChatGPT_Ins_main(std::string Ins)
 		}
 		//WritePrivateProfileStringA(TEXT("GPT"), TEXT("temperature"), LPCTSTR(t_vaule.c_str()), lpFileName);
 	}
-	else if (!this->AI_Ins.find("c"))
+	else if (!this->AI_Ins.compare("c"))
 	{
 
-		if (this->mode & 1 == 1)
+		if ((this->mode & 1) == 1)
 		{
 			this->mode = 0;
-			Send_StringTEXT_Message("now is new bing mode");
+			Send_StringTEXT_Message("now is CHATGPT 3.5 mode");
 		}
 		else
 		{
 			this->mode = 1;
-			Send_StringTEXT_Message("now is CHATGPT 3.5 mode");
+			Send_StringTEXT_Message("now is new bing mode");
 		}
 			
 	}
@@ -211,6 +211,36 @@ void ChatGPT::ChatGPT_Ins_main(std::string Ins)
 		LPCTSTR lpFileName = TEXT(_GTPSETTING_);
 		WritePrivateProfileStringA("GPT", "timeout", t_vaule.c_str(), _GTPSETTING_);
 		Send_StringTEXT_Message("now set timeout to " + t_vaule);
+	}
+	else if (!this->AI_Ins.find("keyset"))
+	{
+		std::unique_ptr< CInI> ini{ new  CInI{_GTPSETTING_} };
+		int keycount =  ini->CountSectionKeyA("GPTKEYPOLL") - 1;
+		if (this->AI_Ins[6] != 32 || this->AI_Ins[8] != 32)
+		{
+			Send_StringTEXT_Message("'keyset x sk-openaikey' error in fromat | check your input");
+			return;
+		}
+		else if (this->AI_Ins[7] - 48 > keycount || this->AI_Ins[7] == 48 || !std::isdigit(this->AI_Ins[7]))
+		{
+			Send_StringTEXT_Message("'keyset x sk-openaikey' error in 'x' | x should be digit less than count : "+ std::to_string(keycount) +",more than 0 the keycount start '1'");
+			return;
+		}
+
+		std::string key_set = this->AI_Ins.substr(9, this->AI_Ins.size());
+		std::string head = this->AI_Ins.substr(0, 2);
+		
+		if (key_set.substr(0, 3).compare("sk-") != 0|| key_set.size() != 51)
+		{
+			Send_StringTEXT_Message("'keyset x sk-openaikey' error in 'key fromat' | not llegal openai keyformat");
+			return;
+		}
+		/*std::string key_index = msg.substr(this->AI_Ins.find(" ") + 1, msg.find(" ") + 1);
+		std::string key_set = msg.substr(msg.find(" ") + 1, this->AI_Ins.size());*/
+		if(ini->WriteValueA("GPTKEYPOLL", "key"+std::to_string(this->AI_Ins[7]-48), key_set))
+			Send_StringTEXT_Message("set successful");
+		else
+			Send_StringTEXT_Message("set error ");
 	}
 	else
 	{
