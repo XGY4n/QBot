@@ -15,7 +15,7 @@
 #include"ChineseString.h"
 #include"Timelog.h"
 #include"ini.h"
-
+#include"Botlog.h"
 //HWND WIN = FindWindow(_T("TXGuiFoundation"), _T("不常用群聊"));
 
 //this to function copy message to Clipboard
@@ -120,7 +120,9 @@ void Send_File(std::string Path)
     Sleep(100);
     SendMessage(MainGroup, WM_KEYDOWN, VK_RETURN, 0);
     Sleep(100);
-    LOG_writer(Path);
+    std::unique_ptr<Botlog> log{ new Botlog{} };
+    //LOG_writer(Path);
+    log->Record(Botlog::LEVEL_SUCCESS, Botlog::OWNER_SELF, Path);
 }
 
 

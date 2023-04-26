@@ -30,6 +30,7 @@
 #include"ini.h"
 #include"McServer.h"
 #include"ChatGPT.h"
+#include"Botlog.h"
 //#include"CInI.h"
 //#include"CInIReader.h"
 
@@ -130,6 +131,8 @@ Bot_mode Find_Map_Executmode(std::string Head, std::string Instructions, std::st
 
 int Bot_Execut(Bot_mode mode, std::string Ins, std::string Name, std::string QQnumber)
 {
+	std::unique_ptr<Botlog> log{ new Botlog{} };
+	std::unique_ptr<CInI> ini{ new CInI{"./ini/GroupName.ini"} };
 	switch (mode)
 	{
 		case Bot_Picture:
@@ -206,12 +209,36 @@ int Bot_Execut(Bot_mode mode, std::string Ins, std::string Name, std::string QQn
 			Send_StringTEXT_Message(Make_Random(Ins));
 			break;
 		case Bot_GetLog:
-			Temp_Log();
-			Send_File("E:/QBot/log/temp.log");
+			log->Temp_log(Ins);
+			log->Record(Botlog::LEVEL_SUCCESS, Botlog::OWNER_SELF, ini->FindValueA<std::string>("TempPath", "Path"));
+			Send_File(ini->FindValueA<std::string>("TempPath", "Path"));
 			break;
 		default:
 			/*Send_StringTEXT_Message("ai");
 			break;*/
+			if (Ins.size() == 6&& IS_DIGIT_STR(Ins))
+			{
+				HWND seewo = FindWindow(_T("Chrome_WidgetWin_1"), _T("希沃品课"));
+				SetForegroundWindow(seewo);
+				Sleep(1000);
+				//copy_text_to_clipboard(a);
+				for (int j = 0; j < 2; j++)
+				{
+					for (int i = 0; i < 6; i++)
+					{
+						PostMessage(seewo, WM_KEYDOWN, Ins[i], 0);
+						//PostMessage(hwnd, WM_KEYUP, a[i], 0);
+						Sleep(100);// Release CTRL
+					}
+					Sleep(1000);
+					PostMessage(seewo, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(541, 411));
+					//发送WM_LBUTTONUP消息，表示鼠标左键松开
+					PostMessage(seewo, WM_LBUTTONUP, 0, MAKELPARAM(541, 411));
+				}
+
+				Send_StringTEXT_Message("maby?");
+				break;
+			}
 			if (AI->mode)
 				AI->ChatGPT_NEWBING(Ins);
 			else

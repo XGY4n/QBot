@@ -15,7 +15,13 @@
 #include"QueueDef.h"
 #include "ChatGPT.h"
 
-
+#define IS_DIGIT_STR(str) \
+    ([](const string& s) -> bool { \
+        for (char c : s) { \
+            if (!isdigit(c)) return false; \
+        } \
+        return true; \
+    })(str)
 
 
 extern std::map<std::string, int>Instructions_set;

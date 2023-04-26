@@ -148,10 +148,11 @@
       <CompileAsManaged>true</CompileAsManaged>
       <SupportJustMyCode>true</SupportJustMyCode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <ExceptionHandling>false</ExceptionHandling>
       <AdditionalIncludeDirectories>E:\mysql\include;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\include;$(ProjectDir)\ini;$(ProjectDir)\Game;$(ProjectDir)\QBot;$(ProjectDir)\log;$(ProjectDir)\mysql;$(ProjectDir)\MCBOT;$(ProjectDir)\;$(ProjectDir)\mysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -164,6 +165,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BiliVFollow.cpp" />
+    <ClCompile Include="log\Botlog.cpp" />
     <ClCompile Include="ChatGPT.cpp" />
     <ClCompile Include="ini\CInI.cpp" />
     <ClCompile Include="CPythonCall.cpp" />
@@ -192,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BiliVFollow.h" />
+    <ClInclude Include="log\Botlog.h" />
     <ClInclude Include="ChatGPT.h" />
     <ClInclude Include="ini\CInI.h" />
     <ClInclude Include="CPythonCall.h" />

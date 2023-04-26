@@ -17,6 +17,8 @@
 #include"ErrorHelpMessage.h"
 #include"Timelog.h"
 #include"Python_main.h"
+#include"CInI.h"
+
 #define _ISNOTFOUND_(str) (str.size() == 0) ? 1 : 0
 #define P_MuicePath "E:/Qbot/resource/music/"
 
@@ -40,7 +42,8 @@ std::string musicID_standardization(std::string musicID)//make name lawful  \\re
 
 void send_mp3(std:: string musicID)
 {
-    std::string MusicPath = "E:\\Qbot\\resource\\music\\";
+    std::unique_ptr<CInI> ini{ new CInI{"./ini/GroupName.ini"} };
+    std::string MusicPath = ini->FindValueA<std::string>("music","Path"); //"E:\\Qbot\\resource\\music\\";
     MusicPath = MusicPath + musicID + ".mp3";
     //std::cout << MusicPath <<std::endl;
     LOG_writer(Now_time() + MusicPath);
