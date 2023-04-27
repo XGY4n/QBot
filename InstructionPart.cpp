@@ -31,6 +31,7 @@
 #include"McServer.h"
 #include"ChatGPT.h"
 #include"Botlog.h"
+#include"Pyreflex.h"
 //#include"CInI.h"
 //#include"CInIReader.h"
 
@@ -97,6 +98,29 @@ std::map<std::string, Bot_mode>Instructions_set{
 	{"getlog", Bot_GetLog},
 };
 
+void seewo(std::string Ins)
+{
+		HWND seewo = FindWindow(_T("Chrome_WidgetWin_1"), _T("希沃品课"));
+		SetForegroundWindow(seewo);
+		Sleep(1000);
+		//copy_text_to_clipboard(a);
+		for (int j = 0; j < 2; j++)
+		{
+			for (int i = 0; i < 6; i++)
+			{
+				PostMessage(seewo, WM_KEYDOWN, Ins[i], 0);
+				//PostMessage(hwnd, WM_KEYUP, a[i], 0);
+				Sleep(100);// Release CTRL
+			}
+			Sleep(1000);
+			PostMessage(seewo, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(541, 411));
+			//发送WM_LBUTTONUP消息，表示鼠标左键松开
+			PostMessage(seewo, WM_LBUTTONUP, 0, MAKELPARAM(541, 411));
+		}
+
+		Send_StringTEXT_Message("maby?");
+
+}
 
 int check_Instructions(std::string Instructions, std::string Name, std::string QQnumber);
 
@@ -133,6 +157,12 @@ int Bot_Execut(Bot_mode mode, std::string Ins, std::string Name, std::string QQn
 {
 	std::unique_ptr<Botlog> log{ new Botlog{} };
 	std::unique_ptr<CInI> ini{ new CInI{"./ini/GroupName.ini"} };
+	std::pair<std::string, std::string> _Py_Reflex_Tuple;
+	CInI::INI_MAP<std::string> load_x;
+	std::unique_ptr<CInI> _PyCfg{ new CInI{"./ini/pyload.ini"} };
+	Pyreflex::CPRA analysis;
+	std::pair<std::string, std::string> Excut;
+	//std::unique_ptr<CInI> ini{ new CInI{"./ini/pyload.ini"} };
 	switch (mode)
 	{
 		case Bot_Picture:
@@ -214,36 +244,31 @@ int Bot_Execut(Bot_mode mode, std::string Ins, std::string Name, std::string QQn
 			Send_File(ini->FindValueA<std::string>("TempPath", "Path"));
 			break;
 		default:
-			/*Send_StringTEXT_Message("ai");
-			break;*/
-			if (Ins.size() == 6&& IS_DIGIT_STR(Ins))
+			if (Ins.size() == 6 && IS_DIGIT_STR(Ins))
 			{
-				HWND seewo = FindWindow(_T("Chrome_WidgetWin_1"), _T("希沃品课"));
-				SetForegroundWindow(seewo);
-				Sleep(1000);
-				//copy_text_to_clipboard(a);
-				for (int j = 0; j < 2; j++)
-				{
-					for (int i = 0; i < 6; i++)
-					{
-						PostMessage(seewo, WM_KEYDOWN, Ins[i], 0);
-						//PostMessage(hwnd, WM_KEYUP, a[i], 0);
-						Sleep(100);// Release CTRL
-					}
-					Sleep(1000);
-					PostMessage(seewo, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(541, 411));
-					//发送WM_LBUTTONUP消息，表示鼠标左键松开
-					PostMessage(seewo, WM_LBUTTONUP, 0, MAKELPARAM(541, 411));
-				}
-
-				Send_StringTEXT_Message("maby?");
+				seewo(Ins);
 				break;
 			}
+
+			_Py_Reflex->_Py_cut(_Py_Reflex_Tuple, Ins);
+			//std::cout << "tuple :" << _Py_Reflex_Tuple.first << "---" << _Py_Reflex_Tuple.second << std::endl;
+			if (_Py_Reflex->_Py_check(load_x, _Py_Reflex_Tuple.first))
+			{
+				analysis = _Py_Reflex->_Py_Reflex_analysis(load_x);
+				_Py_Reflex->_Py_excut(analysis, _Py_Reflex_Tuple.second);
+				break;
+			}
+			else
+			{
+				log->Record(Botlog::LEVEL_ERROR, Botlog::OWNER_SELF, std::string("Py_load_NULL or error"));
+				//Send_StringTEXT_Message("_Py_load_NULL");log 
+			}
+
 			if (AI->mode)
 				AI->ChatGPT_NEWBING(Ins);
 			else
 				AI->ChatGPT_OPENAI(Ins);
-
+			//std::cout << Ins << std::endl;
 			break;
 			/*if (QQnumber.compare("1364303391") == 0 || QQnumber.compare("2995244756") == 0)
 				Send_StringTEXT_Message(sql_rand_message(Random_Number(36)));

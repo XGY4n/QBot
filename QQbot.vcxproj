@@ -182,6 +182,7 @@
     <ClCompile Include="MCBOT\ServerStart.cpp" />
     <ClCompile Include="MCBOT\TunnleRestart.cpp" />
     <ClCompile Include="mysql\mysql_main.cpp" />
+    <ClCompile Include="Pyreflex.cpp" />
     <ClCompile Include="Python_main.cpp" />
     <ClCompile Include="QueueDef.cpp" />
     <ClCompile Include="ChineseString.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="MCBOT\ServerStart.h" />
     <ClInclude Include="MCBOT\TunnleRestart.h" />
     <ClInclude Include="mysql\mysql_main.h" />
+    <ClInclude Include="Pyreflex.h" />
     <ClInclude Include="Python_main.h" />
     <ClInclude Include="QueueDef.h" />
     <ClInclude Include="ChineseString.h" />

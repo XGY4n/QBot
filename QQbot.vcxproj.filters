@@ -96,6 +96,9 @@
     <ClCompile Include="log\Botlog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Pyreflex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="QueueDef.h">
@@ -177,6 +180,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="log\Botlog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Pyreflex.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

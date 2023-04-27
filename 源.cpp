@@ -19,6 +19,7 @@
 #include"ini.h"
 #include"ChineseString.h"
 #include"ChatGPT.h"
+#include"Pyreflex.h"
 
 using namespace UIATest;//c# UIA to take message from QQ
 using namespace std;
@@ -31,6 +32,7 @@ using namespace System::Runtime::InteropServices;
 std::string GroupName = InI_Group_Name();// InI_Group_Name();//"aa";
 HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(GroupName));
 
+std::unique_ptr<Pyreflex> _Py_Reflex{ new Pyreflex{} };
 
 void wait_scan(std::string GroupName)
 {
@@ -61,7 +63,7 @@ int main()
     wait_scan(GroupName);
 
 
-    
+    _Py_Reflex->_Py_load_();
     //std::cout
     //wait uia scan
     std::thread TakeRowQmessage(Tpush_rawmessage_to_queue);

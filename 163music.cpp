@@ -18,11 +18,11 @@
 #include"Timelog.h"
 #include"Python_main.h"
 #include"CInI.h"
-
+#include"Botlog.h"
 #define _ISNOTFOUND_(str) (str.size() == 0) ? 1 : 0
 #define P_MuicePath "E:/Qbot/resource/music/"
 
-std::string MusicPath = "E:/Qbot/resource/music/";
+//std::string MusicPath = "E:/Qbot/resource/music/";
 
 std::string musicID_standardization(std::string musicID)//make name lawful  \\resource
 {
@@ -43,11 +43,12 @@ std::string musicID_standardization(std::string musicID)//make name lawful  \\re
 void send_mp3(std:: string musicID)
 {
     std::unique_ptr<CInI> ini{ new CInI{"./ini/GroupName.ini"} };
-    std::string MusicPath = ini->FindValueA<std::string>("music","Path"); //"E:\\Qbot\\resource\\music\\";
-    MusicPath = MusicPath + musicID + ".mp3";
+    std::unique_ptr<Botlog> log{ new Botlog{} };
+    std::string MusicPathr = ini->FindValueA<std::string>("music","Path"); //"E:\\Qbot\\resource\\music\\";
+    MusicPathr = MusicPathr + musicID + ".mp3";
     //std::cout << MusicPath <<std::endl;
-    LOG_writer(Now_time() + MusicPath);
-    int temp = check_file(MusicPath);
+    log->Record(Botlog::LEVEL_SUCCESS, Botlog::OWNER_UNDEF, MusicPathr);
+    int temp = check_file(MusicPathr);
     if (temp == -1)
     {
         Send_StringTEXT_Message(Send_Error_Message());
@@ -55,7 +56,7 @@ void send_mp3(std:: string musicID)
     } 
     Send_StringTEXT_Message("VIP support from 钟/亲亲~ Please check this .mp3!");
     Sleep(100);
-    Send_File(MusicPath);
+    Send_File(MusicPathr);
 }
 
 
