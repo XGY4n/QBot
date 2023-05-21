@@ -1,4 +1,4 @@
-#using "./c#qqmessage/UIAgetinformation.dll"
+#using "./c#qqmessage/uaiQmsgc.dll"
 #include <iostream>
 #include <string>
 #include <tchar.h>
@@ -16,10 +16,10 @@
 #include"QueueOperation.h"
 #include"InstructionPart.h"
 #include"Timelog.h"
-#include "SendMessage.h"
+#include"SendMessage.h"
 #include"Botlog.h"
-
-using namespace UIATest;
+#include"UIAMsg.h"
+using namespace uaiQmsgc;
 using namespace std;
 using namespace System;
 using namespace System::Runtime::InteropServices;
@@ -39,10 +39,39 @@ typedef enum {
     Bot_SelfCall = -2,
 }QueueCall;
 
+void sendClick(HWND hwnd, int x, int y)
+{
+    LPARAM lParam = MAKELPARAM(x, y);
+    PostMessage(hwnd, WM_LBUTTONDOWN, MK_LBUTTON, lParam);
+    Sleep(50);
+    PostMessage(hwnd, WM_LBUTTONUP, 0, lParam);
+    Sleep(50);
+}
+
+
+
+void MoveWindowOffScreen(HWND hwnd)
+{
+    // 获取屏幕分辨率
+    int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+    int screenHeight = GetSystemMetrics(SM_CYSCREEN);
+
+    // 获取窗口大小
+    RECT rect;
+    GetWindowRect(hwnd, &rect);
+    int windowWidth = rect.right - rect.left;
+    int windowHeight = rect.bottom - rect.top;
+
+    // 将窗口移动到屏幕外
+    MoveWindow(hwnd, screenWidth, screenHeight, windowWidth, windowHeight, TRUE);
+}
+
+
 
 int  Tpush_rawmessage_to_queue()//this function to take Rawmessage from QQ
 {
     std::unique_ptr<Botlog> log{ new Botlog{} };
+    std::unique_ptr<UIAMsg> _Getmsg{ new UIAMsg{} };
     std::string tempp;
     Program^ messagee = gcnew Program();//UIA class
     Chinese ch;//CN string 
@@ -50,23 +79,31 @@ int  Tpush_rawmessage_to_queue()//this function to take Rawmessage from QQ
     int timer_s = 0;
     bool heart_beat = true;
     std::string front_data;
+    HWND hwnd = FindWindow(_T("TXGuiFoundation"), _T("消息管理器"));
+    std::cout << hwnd << std::endl;
+    Chinese Qmsg;
+    MoveWindowOffScreen(hwnd);
     while (1)
     {
-        HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(InI_Group_Name()));//
+        
+        sendClick(hwnd, 646,113);
+        //HWND MainGroup = FindWindow(_T("TXGuiFoundation"), multi_Byte_To_Wide_Char(InI_Group_Name()));//
         //SetForegroundWindow(MainGroup);
-        MarshalString(messagee->Take(), RawMessage);//systemstring to string Take() is C# function cant take UIA message
+       // MarshalString(messagee->Take(), RawMessage);//systemstring to string Take() is C# function cant take UIA message
+        RawMessage = _Getmsg->UIAGet_Msg_String();//newone();
+        //RawMessage = newone();
+        //std::cout<<RawMessage<<std::endl;
         _TIMER_(RawMessage, LatestMessage)
-            if (timer_s == 5000)
+            if (timer_s == 1500)
                 log->Record(Botlog::LEVEL_SUCCESS, Botlog::OWNER_SELF,std::string("Heart Beat"));//LOG_writer("[Self]" + Now_time() + "Heart beat");
-            else if (timer_s > 5000)
-                timer_s = 5000;
+            else if (timer_s > 1500)
+                timer_s = 1500;
         LatestMessage = RawMessage;
-        Chinese Qmsg;
         Chinese::Qmsg result;
         try
         {
              
-             result = Qmsg.Qmsgmake(RawMessage);
+             result = Qmsg.Qmsgmake2(RawMessage);
              //std::cout << "|" << result.DataTime << "|" << result.name << "|" << result.message<< "|" << result.QQnumber<< std::endl;
              name = result.name;//make_name(RawMessage);//Make the nearest Message username
              QQnumber = result.QQnumber;//make_number(RawMessage);//Make the nearest Message UserQQnumber
@@ -139,6 +176,7 @@ int  Tpush_rawmessage_to_queue()//this function to take Rawmessage from QQ
             Send_StringTEXT_Message("undefine error");;
         }
         //std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        Sleep(150);
     }
 }
 

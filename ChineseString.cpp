@@ -4,7 +4,8 @@
 #include <locale>
 #include <codecvt>
 #include <tchar.h>
-
+#include <windows.h>
+#include <UIAutomation.h>
 typedef enum {
     Bot_Call = 1,
     Bot_NotCall,
@@ -104,6 +105,113 @@ std::string Chinese::wstrToStr(std::wstring& wstr)
     return r;
 }
 
+
+std::string newone()
+{
+    CoInitialize(NULL);
+    IUIAutomation* pAutomation;
+    CoCreateInstance(__uuidof(CUIAutomation), NULL, CLSCTX_INPROC_SERVER, __uuidof(IUIAutomation), (void**)&pAutomation);
+    IUIAutomationElement* pRootElement;
+    pAutomation->GetRootElement(&pRootElement);
+
+    IUIAutomationCondition* pNameCondition;
+    VARIANT varProp1;
+    varProp1.vt = VT_BSTR;
+    varProp1.bstrVal = SysAllocString(L"TXGuiFoundation");
+    pAutomation->CreatePropertyCondition(UIA_ClassNamePropertyId, varProp1, &pNameCondition);
+
+    IUIAutomationCondition* pClassNameCondition;
+    VARIANT varProp2;
+    varProp2.vt = VT_BSTR;
+    varProp2.bstrVal = SysAllocString(L"消息管理器");
+    pAutomation->CreatePropertyCondition(UIA_NamePropertyId, varProp2, &pClassNameCondition);
+
+    IUIAutomationCondition* pAndCondition;
+    pAutomation->CreateAndCondition(pNameCondition, pClassNameCondition, &pAndCondition);
+
+    IUIAutomationElement* pWindow;
+    pRootElement->FindFirst(TreeScope_Children, pAndCondition, &pWindow);
+    // 查找名为 "IEMsgView" 的列表控件
+    IUIAutomationCondition* pCondition;
+    VARIANT varProp;
+    varProp.vt = VT_BSTR;
+    varProp.bstrVal = SysAllocString(L"IEMsgView");
+    pAutomation->CreatePropertyCondition(UIA_NamePropertyId, varProp, &pCondition);
+    IUIAutomationElement* pListElement;
+    pRootElement->FindFirst(TreeScope_Descendants, pCondition, &pListElement);
+    if (pListElement != NULL)
+    {
+        // 获取列表控件的子元素
+        IUIAutomationTreeWalker* pControlWalker;
+        pAutomation->get_ControlViewWalker(&pControlWalker);
+        IUIAutomationElement* pItemElement;
+        pControlWalker->GetLastChildElement(pListElement, &pItemElement);
+        if (pItemElement != NULL)
+        {
+            // 获取并处理最后一个列表项的信息
+            BSTR bstrName;
+            pItemElement->get_CurrentName(&bstrName);
+            //wprintf(L"%s\n", bstrName);
+
+            std::wstring ws(bstrName, ::SysStringLen(bstrName));
+            ::SysFreeString(bstrName);
+            int bstrLength = SysStringLen(bstrName);
+            int stringLength = WideCharToMultiByte(CP_ACP, 0, bstrName, bstrLength, NULL, 0, NULL, NULL);
+            char* buffer = new char[stringLength + 1];
+
+            WideCharToMultiByte(CP_ACP, 0, bstrName, bstrLength, buffer, stringLength, NULL, NULL);
+
+            buffer[stringLength] = '\0';
+            std::string str(buffer);
+            pItemElement->Release();
+            delete[] buffer;
+            SysFreeString(bstrName);
+            return str;
+        }
+    }
+
+    pRootElement->Release();
+    pAutomation->Release();
+    CoUninitialize();
+}
+
+
+
+
+
+Chinese::Qmsg Chinese::Qmsgmake2(std::string Rowmessage)
+{
+    Qmsg result;
+
+    Chinese ch;
+    std::wstring input = ch.strToWstr(Rowmessage);
+    std::wstring title, name, qq, time, message;
+    /*for (int i = input.size(); i > 0; i--)
+    {
+        std::cout << input[i] << std::endl;
+    }*/
+    int titleEnd = input.find('】');
+    int nameEnd = input.find('(');
+    int qqEnd = input.find(')');
+    int timeEnd = input.find(':');
+    title = input.substr(0, titleEnd + 1);
+    name = input.substr(titleEnd + 1, nameEnd - titleEnd - 1);
+    qq = input.substr(nameEnd + 1, qqEnd - nameEnd - 1);
+    time = input.substr(qqEnd + 1, timeEnd - qqEnd + 5);
+    message = input.substr(timeEnd + 6);
+    result.name = ch.wstrToStr(name);
+    result.QQnumber = ch.wstrToStr(qq);
+    result.DataTime = ch.wstrToStr(time);
+    result.message = ch.wstrToStr(message);
+    //result.name = ch.wstrToStr(sendname4);
+   // std::wcout << title << std::endl;
+    //std::wcout << name << std::endl;
+    //std::wcout << qq << std::endl;
+    //std::wcout << time << std::endl;
+    //std::wcout << message << std::endl;
+
+    return result;
+}
 
 Chinese::Qmsg Chinese::Qmsgmake(std::string Rowmessage)
 {

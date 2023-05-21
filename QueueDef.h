@@ -1,5 +1,5 @@
 #pragma once
-#using "./c#qqmessage/UIAgetinformation.dll"
+#using "./c#qqmessage/uaiQmsgc.dll"
 #include <iostream>
 #include <string>
 #include <tchar.h>
@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <msclr\marshal_cppstd.h>
 
-using namespace UIATest;
+using namespace uaiQmsgc;
 using namespace std;
 using namespace System;
 using namespace System::Runtime::InteropServices;

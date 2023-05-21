@@ -122,7 +122,7 @@ void Send_File(std::string Path)
     Sleep(100);
     std::unique_ptr<Botlog> log{ new Botlog{} };
     //LOG_writer(Path);
-    log->Record(Botlog::LEVEL_SUCCESS, Botlog::OWNER_SELF, Path);
+    log->Record(Botlog::LEVEL_SUCCESS, Botlog::OWNER_SELF, "Send File : " + Path);
 }
 
 

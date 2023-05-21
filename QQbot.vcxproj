@@ -129,12 +129,13 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExceptionHandling>false</ExceptionHandling>
-      <AdditionalIncludeDirectories>D:\pojt\QQbot;C:\Users\DELL\AppData\Local\Programs\Python\Python39-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\pojt\QQbot;C:\Users\DELL\AppData\Local\Programs\Python\Python39-32\include;$(WindowsSDK_IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Users\DELL\AppData\Local\Programs\Python\Python39-32\libs\python39_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Uiautomationcore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(WindowsSDK_LibraryPath_x64);python39.lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -150,7 +151,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <ExceptionHandling>false</ExceptionHandling>
-      <AdditionalIncludeDirectories>E:\mysql\include;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\include;$(ProjectDir)\ini;$(ProjectDir)\Game;$(ProjectDir)\QBot;$(ProjectDir)\log;$(ProjectDir)\mysql;$(ProjectDir)\MCBOT;$(ProjectDir)\;$(ProjectDir)\mysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\DELL\AppData\Local\Programs\Python\Python39\include;D:\mysql-8.0.28-winx64\include;$(ProjectDir)\ini;$(ProjectDir)\Game;$(ProjectDir)\log;$(ProjectDir)\mysql;$(ProjectDir)\MCBOT;$(ProjectDir)\;$(ProjectDir)\mysql\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -159,12 +160,13 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\mysql\lib;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>E:\mysql\lib\libmysql.lib;C:\Users\Administrator\AppData\Local\Programs\Python\Python310\libs\python310.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\mysql-8.0.28-winx64\lib;$(ProjectDir)libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BiliVFollow.cpp" />
+    <ClCompile Include="botinit.cpp" />
     <ClCompile Include="log\Botlog.cpp" />
     <ClCompile Include="ChatGPT.cpp" />
     <ClCompile Include="ini\CInI.cpp" />
@@ -191,10 +193,12 @@
     <ClCompile Include="SelfMode.cpp" />
     <ClCompile Include="SendMessage.cpp" />
     <ClCompile Include="systemStringtoString.cpp" />
+    <ClCompile Include="UIAMsg.cpp" />
     <ClCompile Include="源.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BiliVFollow.h" />
+    <ClInclude Include="botinit.h" />
     <ClInclude Include="log\Botlog.h" />
     <ClInclude Include="ChatGPT.h" />
     <ClInclude Include="ini\CInI.h" />
@@ -222,6 +226,7 @@
     <ClInclude Include="SelfMode.h" />
     <ClInclude Include="SendMessage.h" />
     <ClInclude Include="systemStringtoString.h" />
+    <ClInclude Include="UIAMsg.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="QQbot1.rc" />

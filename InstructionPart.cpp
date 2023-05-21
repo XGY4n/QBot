@@ -74,7 +74,8 @@ typedef enum  {
 	Bot_ChatGTP,
 	Bot_ChatGTP_refresh,
 	Bot_rand,
-	Bot_GetLog
+	Bot_GetLog,
+    Bot_Python_Reflex_Reload
 }Bot_mode;
 
 
@@ -96,7 +97,11 @@ std::map<std::string, Bot_mode>Instructions_set{
 	{"ai.", Bot_ChatGTP},
 	{"r.", Bot_rand},
 	{"getlog", Bot_GetLog},
+    {"reload", Bot_Python_Reflex_Reload},
 };
+
+
+
 
 void seewo(std::string Ins)
 {
@@ -243,6 +248,10 @@ int Bot_Execut(Bot_mode mode, std::string Ins, std::string Name, std::string QQn
 			log->Record(Botlog::LEVEL_SUCCESS, Botlog::OWNER_SELF, ini->FindValueA<std::string>("TempPath", "Path"));
 			Send_File(ini->FindValueA<std::string>("TempPath", "Path"));
 			break;
+        case Bot_Python_Reflex_Reload:
+            _Py_Reflex->initializePython();
+            Send_StringTEXT_Message("Reload successful");
+            break;
 		default:
 			if (Ins.size() == 6 && IS_DIGIT_STR(Ins))
 			{
@@ -255,7 +264,7 @@ int Bot_Execut(Bot_mode mode, std::string Ins, std::string Name, std::string QQn
 			if (_Py_Reflex->_Py_check(load_x, _Py_Reflex_Tuple.first))
 			{
 				analysis = _Py_Reflex->_Py_Reflex_analysis(load_x);
-				_Py_Reflex->_Py_excut(analysis, _Py_Reflex_Tuple.second);
+				_Py_Reflex->executePythonReflex(analysis, _Py_Reflex_Tuple.second);
 				break;
 			}
 			else

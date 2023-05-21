@@ -1,5 +1,5 @@
 #pragma once
-#using "./c#qqmessage/UIAgetinformation.dll"
+#using "./c#qqmessage/uaiQmsgc.dll"
 #include <iostream>
 #include<string>
 #include <tchar.h>

@@ -27,6 +27,7 @@ public:
 	char* wstrToChar(const wchar_t* wstr);
 
 	Qmsg Qmsgmake(std::string Rowmessage);
+    Qmsg Qmsgmake2(std::string Rowmessage);
 };
 
 std::string make_name(std::string RawMessage);
@@ -62,3 +63,5 @@ std::string UTF82Char(const char* szU8);
 char* wideCharToMultiByte(wchar_t* pWCStrKey);
 
 std::wstring string2wstring(std::string str);
+
+std::string newone();

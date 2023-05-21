@@ -10,7 +10,7 @@
 #include <queue>
 #include <thread>
 #include <msclr\marshal_cppstd.h>
-#using "./c#qqmessage/UIAgetinformation.dll"
+//#using "./c#qqmessage/UIAgetinformation.dll"
 using namespace System;
 void MarshalString(String^ s, std::string& os);
 void MarshalString(String^ s, std::wstring& os);
