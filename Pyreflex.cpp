@@ -96,7 +96,10 @@ bool Pyreflex::loadPythonModule(Pyreflex::CPRA& analysis,PyObject*& pModule)
 {
     PyRun_SimpleString("import sys");
 
-    PyRun_SimpleString("sys.path.append('./python')");
+    std::string Path = "sys.path.append('" + analysis.Py_Call_Path + "')";
+    Path.erase(std::remove(Path.begin(), Path.end(), '\n'), Path.end());
+
+    PyRun_SimpleString(Path.c_str());
 
     pModule = PyImport_ImportModule(analysis.Py_Call_File.c_str());
     if (pModule == NULL) {
@@ -110,7 +113,8 @@ bool Pyreflex::loadPythonModule(Pyreflex::CPRA& analysis,PyObject*& pModule)
 
 bool convertFromPython(Pyreflex::CPRA analysis)
 {
-    
+    int argc;
+    void * argv;
     return true;
 }
 
@@ -130,11 +134,12 @@ void Pyreflex::returnPythonreflex(std::string return_type, const std::string& re
                 Send_wStringTEXT_Message(reflex_wstr);
                 break;
             case FILE:
-                Send_StringTEXT_Message(reflex_str);
+                Send_File(reflex_str);
                 break;
-            case UNKNOWN:
+            //case UNKNOWN:
+            default:
                 Send_StringTEXT_Message("return type not define");
-            break;
+                break;
         }
         return ;
     }
